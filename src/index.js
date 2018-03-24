@@ -69,8 +69,10 @@ class Game extends React.Component {
     if (squares[i] != null) return;
     if (calculateWinner(squares) != null) return;
     squares[i] = (this.state.xIsNext ? 'X' : 'O');
-    this.state.history.push({squares: squares});
     this.setState({
+      history: this.state.history.concat([{
+        squares: squares,
+      }]),
       xIsNext: !this.state.xIsNext,
     });
   }
